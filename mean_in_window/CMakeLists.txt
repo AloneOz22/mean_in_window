@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "-Wall")
 
 
-option(BUILD_TESTS "Build tests" ON)
-option(BUILD_BENCHMARKS "Build benchmarks" ON)
+option(BUILD_TESTS "Build tests" OFF)
+option(BUILD_BENCHMARKS "Build benchmarks" OFF)
 
 set(lib_sources src/mean_in_window.cpp include/mean_in_window.hpp)
 
