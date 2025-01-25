@@ -7,8 +7,8 @@
 #include <mean_in_window.hpp>
 
 static void CustomArguments(benchmark::internal::Benchmark *b) {
-    const int min_window = 4;
-    const int max_window = 128;
+    const int min_window = 1;
+    const int max_window = 512;
     for (int i = min_window; i <= max_window; i *= 2)
         b->Arg(i);
 }
@@ -47,10 +47,10 @@ BENCHMARK_REGISTER_F(mean_float, run)
             return *(std::min_element(std::begin(v), std::end(v)));
         }
     )
-    ->Unit(benchmark::kMillisecond)
+    ->Unit(benchmark::kSecond)
     ->Apply(CustomArguments)
     ->Iterations(1)
-    ->Repetitions(10);
+    ->Repetitions(20);
 BENCHMARK_REGISTER_F(mean_double, run)
     ->ComputeStatistics(
         "min",
@@ -58,9 +58,9 @@ BENCHMARK_REGISTER_F(mean_double, run)
             return *(std::min_element(std::begin(v), std::end(v)));
         }
     )
-    ->Unit(benchmark::kMillisecond)
+    ->Unit(benchmark::kSecond)
     ->Apply(CustomArguments)
     ->Iterations(1)
-    ->Repetitions(10);
+    ->Repetitions(20);
 
 BENCHMARK_MAIN();
